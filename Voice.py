@@ -20,7 +20,6 @@ import getpass
 import wmi
 import os
 from pathlib import Path
-from twilio.rest import Client
 from clint.textui import progress
 from selenium import webdriver
 from ecapture import ecapture as ec
@@ -213,8 +212,8 @@ def sendEmail(to, content):
     server = smtplib.SMTP('smtp.gmail.com', 587)
     server.ehlo()
     server.starttls()
-    server.login('g.a.u.r.a.v.k.u.m.a.r.i.s.g.r.e.a.t@gmail.com', 'Gaurav123@')
-    server.sendmail('g.a.u.r.a.v.k.u.m.a.r.i.s.g.r.e.a.t@gmail.com', to, content)
+    server.login('youremail@email.com', 'your-password')
+    server.sendmail('youremail@email.com', to, content)
     server.close()
 
 
@@ -290,7 +289,7 @@ if __name__ == '__main__':
             webbrowser.open("stackoverflow.com")   
 
         elif "send a whatsaap message" in query or "send a WhatsApp message" in query:
-            driver = webdriver.Chrome('C:\\Users\\GAURAV\\Downloads\\chromedriver_win32 (1)\\chromedriver.exe')
+            driver = webdriver.Chrome('Web Driver Location')
             driver.get('https://web.whatsapp.com/')
             speak("Scan QR code before proceding")
             tim=10
@@ -307,7 +306,7 @@ if __name__ == '__main__':
                 msg_box.send_keys(msg)
                 button = driver.find_element_by_class_name('_3M-N-')
                 button.click()
-
+                
         elif "stackoverflow " in query:
             speak("Stackoverflow khola ja rha h")
             webbrowser.open("stackoverflow.com")   
@@ -342,17 +341,6 @@ if __name__ == '__main__':
                 print(e)
                 speak("I am not able to send this email")
 
-        elif "gaurav ko mail " in query:
-            try:
-                speak("Mai kiya sandesh likhyu")
-                content = takeCommandcontent()
-                to = "gauravkumarjha27@gmail.com"    
-                sendEmail(to, content)
-                speak("Sandesh bhja geya")
-            except Exception as e:
-                print(e)
-                speak("Sandesh bhjna mai kuch rukawtai aa rhi h")
-
         elif 'send a mail' in query or "mail bhjey" in query:
             try:
                 speak("Mai kiya sandesh likhyu")
@@ -380,11 +368,6 @@ if __name__ == '__main__':
             query=query.replace("change my name to","")
             assname=query
 
-        elif "mera naam Badle" in query:
-            speak("Mai apko kiya bula sakta hu , Sir")
-            assname = takeCommand()
-            speak("Sukriya, Apka naam saflta purwak badl geya hai")
-
         elif "change name" in query:
             speak("What would you like to call me ,Sir ")
             assname = takeCommand()
@@ -395,34 +378,19 @@ if __name__ == '__main__':
             speak(assname)
             print("My friends call me",assname)
 
-        elif "tumhara naam kya hai" in query or "naam kiya hn" in query:
-            speak("mery dost mujhy")
-            speak(assname)
-            speak("keh kr bulatai hai")
-            print("Mery dost mujhy"+assname+"kehty hn")
-
         elif 'exit' in query:
             speak("Thanks for giving me your time")
-            exit()
-
-        elif "band" in query or "ruko" in query:
-            speak("Apky samay kai liya sukriyea")
             exit()
 
         elif "who made you" in query or "who created you" in query: 
             speak("I have been created by Gaurav.")
 
-        elif "Tumhen kisne banaya hai" in query:
-            speak("mujhy Gaurav Kumar dura bniyea geya h")
 
         elif 'joke' in query:
             speak(pyjokes.get_joke())
-            
-        elif "chutkula" in query or "mazak" in query:
-            speak(pyjokes.get_joke)
 
         elif "calculate" in query:
-            app_id = "WTHP37-K6P2X72X3E"
+            app_id = "Wolframe Alpha API"
             client = wolframalpha.Client(app_id)
             indx = query.lower().split().index('calculate')
             query = query.split()[indx + 1:]
@@ -441,11 +409,6 @@ if __name__ == '__main__':
 
         elif "why you came to world" in query:
             speak("Thanks to Gaurav. further It's a secret")
-
-        elif 'power point presentation' in query:
-            speak("opening Power Point presentation")
-            power= r"C:\\Users\\GAURAV\\Desktop\\Minor Project\\Presentation\\Voice Assistant.pptx"
-            os.startfile(power)
 
         elif 'is love' in query:
             speak("It is 7th sense that destroy all other senses")
@@ -466,7 +429,7 @@ if __name__ == '__main__':
 
         elif 'google news' in query:
             try:
-                jsonObj = urlopen('''https://newsapi.org/v2/top-headlines?sources=google-news-in&apiKey=5c06fed7ad3f4c78bb4c3a44255788cd''')
+                jsonObj = urlopen('''https://newsapi.org/v2/top-headlines?sources=google-news-in&apiKey=Google news API key''')
                 data = json.load(jsonObj)
                 i = 1
                 speak('')
@@ -481,7 +444,7 @@ if __name__ == '__main__':
 
         elif "bbc news" in query:
             try:
-                main_url = " https://newsapi.org/v1/articles?source=bbc-news&sortBy=top&apiKey=5c06fed7ad3f4c78bb4c3a44255788cd"
+                main_url = " https://newsapi.org/v1/articles?source=bbc-news&sortBy=top&apiKey=BBC News API key"
                 open_bbc_page = requests.get(main_url).json() 
                 article = open_bbc_page["articles"] 
                 results = [] 
@@ -494,7 +457,7 @@ if __name__ == '__main__':
 
         elif 'news' in query: #samachar
             try:
-                jsonObj = urlopen('''https://newsapi.org/v1/articles?source=the-times-of-india&sortBy=top&apiKey=5eeb7514007b4690b7195b4d197a75d4''')
+                jsonObj = urlopen('''https://newsapi.org/v1/articles?source=the-times-of-india&sortBy=top&apiKey=Time of INDIA API key''')
                 data = json.load(jsonObj)
                 i = 1
                 speak('here are some top news from the times of india')
@@ -514,27 +477,13 @@ if __name__ == '__main__':
         elif 'shutdown system' in query:
             speak("Hold On a Sec! Your system is on its way to shut down")
             subprocess.call('shutdown /p /f')
-
-        elif "shutdown Pranali" in query:
-            subprocess.call('shutdown /p /f')
-
+            
         elif 'empty recycle bin' in query:
             winshell.recycle_bin().empty(confirm=False, show_progress=False, sound=True)
             speak("Recycle Bin Recycled")
 
-        elif 'recycle bin Khali Karen' in query:
-            winshell.recycle_bin().empty(confirm=False, show_progress=False, sound=True)
-            speak("reesaayakal bin punarnaveeneekaran")
-
-
         elif "don't listen" in query or "stop listening" in query:
             speak("for how much time you want to stop jarvis from listening commands")
-            a=int(takeCommand())
-            time.sleep(a)
-            print(a)
-
-        elif "suno nahin" in query or "sunana band karo" in query:
-            speak("aap jaarvis ko sunane ke aadeshon ko kitane samay ke lie rokana chaahate hain")
             a=int(takeCommand())
             time.sleep(a)
             print(a)
@@ -609,7 +558,7 @@ if __name__ == '__main__':
             speak(assname)
 
         elif "weather" in query:
-            api_key = "139ff8e5644894750d3293adb1372433"
+            api_key = "Open weather map API key"
 
                 base_url = "http://api.openweathermap.org/data/2.5/weather?"
             speak(" City name ")
@@ -629,40 +578,7 @@ if __name__ == '__main__':
             else: 
                 speak(" City Not Found ") 
 
-        elif "mausam" in query:
-            api_key = "139ff8e5644894750d3293adb1372433"
-            base_url = "http://api.openweathermap.org/data/2.5/weather?"
-            speak("shahar ka naam")
-            print("shahar ka naam")
-            city_name=takeCommand()
-            complete_url = base_url + "appid=" + api_key + "&q=" + city_name
-            response = requests.get(complete_url)
-            x = response.json()
-            if x["cod"] != "404":
-                y = x["main"]
-                current_temperature = y["temp"] 
-                current_pressure = y["pressure"] 
-                current_humidiy = y["humidity"] 
-                z = x["weather"] 
-                weather_description = z[0]["description"] 
-                print("taapamaan (kelvin ikaee mein) = " +str(current_temperature)+"\n vaayumandaleey dabaav (hp ikaee mein) = "+str(current_pressure) +"\n aardrata (pratishat mein) = " +str(current_humidiy) +"\n varnan = " +str(weather_description)) 
-            else:
-                speak("sitee nahin milee")
-
-        elif "send message " in query:
-                account_sid = 'AC4b9309a38f9db652d6d6da100cae22b3'
-                auth_token = 'c4dd02d5bb8093122e04b10b98244ec0'
-                client = Client(account_sid, auth_token)
-                message = client.messages \
-                                .create(
-                                    body=takeCommand(),
-                                    from_='+15084553394',
-                                    to='+919873784911'
-                                )
-
-                print(message.sid)
-
-        elif "wikipedia" in query:
+                elif "wikipedia" in query:
             webbrowser.open("wikipedia.com")
 
         elif "will you be my gf" in query or "will you be my bf" in query:   #most asked question from google Assistant
@@ -675,7 +591,7 @@ if __name__ == '__main__':
             speak("It's hard to understand")
 
         elif "what is" in query or "who is" in query:
-            client= wolframalpha.Client("WTHP37-K6P2X72X3E")
+            client= wolframalpha.Client("WOlframe Alpha API key")
             res = client.query(query)
             try:
                 print(next(res.results).text)
