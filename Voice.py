@@ -48,7 +48,7 @@ DIRECTORIES = {
               ".msv", "ogg", "oga", ".raw", ".vox", ".wav", ".wma"],
     "PLAINTEXT": [".txt", ".in", ".out"],
     "PDF": [".pdf"],
-    "PYTHON": [".py"],
+    "PYTHON": [".py",".pyi"],
     "XML": [".xml"],
     "EXE": [".exe"],
     "SHELL": [".sh"]
