@@ -487,17 +487,9 @@ if __name__ == '__main__':
         elif "where is" in query:
             query=query.replace("where is","")
             location = query
-            speak("User asked to Locate")
+            speak("Locating ")
             speak(location)
             webbrowser.open("https://www.google.nl/maps/place/" + location + "")
-
-        elif "kahan hai" in query:
-            query=query.replace("kahan hai","")
-            location = query
-            speak(location)
-            speak("ke lie khoj")
-            webbrowser.open("https://www.google.nl/maps/place/" + location + "")
-
 
         elif "camera" in query or "take a photo" in query:
             ec.capture(0,"Jarvis Camera ","img.jpg")
