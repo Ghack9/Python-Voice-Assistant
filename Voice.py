@@ -238,7 +238,7 @@ if __name__ == '__main__':
             speak('Searching Wikipedia...')
             query = query.replace("wikipedia", "")
             results = wikipedia.summary(query, sentences=3)
-            speak("According to Wikipedia")
+            speak("Answer From Wikipedia")
             print(results)
             speak(results)
 
@@ -259,15 +259,11 @@ if __name__ == '__main__':
             speak(results)
 
         elif 'open youtube' in query:
-            speak("Here you go to Youtube\n")
+            speak("Taking You To Youtube\n")
             webbrowser.open("youtube.com")
 
         elif 'open google' in query:
-            speak("Here you go to Google\n")
-            webbrowser.open("google.com")
-
-        elif "google kholay" in query:
-            speak("google khola ja rha h")
+            speak("Taking you to Google\n")
             webbrowser.open("google.com")
 
         elif "change brightness to " in query:
