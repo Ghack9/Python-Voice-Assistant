@@ -337,28 +337,9 @@ if __name__ == '__main__':
                 print(e)
                 speak("I am not able to send this email")
 
-        elif 'send a mail' in query or "mail bhjey" in query:
-            try:
-                speak("Mai kiya sandesh likhyu")
-                content = takeCommandcontent()
-                speak("yai sandesh kesy bhjna h")
-                to = input()    
-                sendEmail(to, content)
-                speak("sandesh safalta purwak bhja geya")
-            except Exception as e:
-                print(e)
-                speak("Sandesh bhjny mai kuch rukwata aa rhi h")
-
         elif 'how are you' in query:
         	speak("I am fine , Thank you")
         	speak("How are you, Sir")
-
-        elif "aap kesy ho" in query or "tum kesy ko" in query:
-            speak("Mai aacha hu")
-            speak("aap kesy hn Sir")
-
-        elif "mai thik hu" in query or "thik hu" in query:
-            speak("jaan kr kushi hui ke aap thik hai")
 
         elif "change my name to" in query:
             query=query.replace("change my name to","")
@@ -380,7 +361,6 @@ if __name__ == '__main__':
 
         elif "who made you" in query or "who created you" in query: 
             speak("I have been created by Gaurav.")
-
 
         elif 'joke' in query:
             speak(pyjokes.get_joke())
